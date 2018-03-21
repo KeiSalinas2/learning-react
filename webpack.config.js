@@ -17,7 +17,7 @@ module.exports = (env) => {
   return {
 
     entry: {
-      "platzi-video": path.resolve(__dirname, 'index.js'),
+      "home": path.resolve(__dirname, 'src/entries/home.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -31,8 +31,6 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          // test: que tipo de archivo quiero reconocer,
-          // use: que loader se va a encargar del archivo
           test: /\.(js|jsx)$/,
           exclude: /(node_modules)/,
           use: {
