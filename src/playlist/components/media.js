@@ -3,22 +3,6 @@ import PropTypes from 'prop-types';
 import './media.css';
 
 class Media extends PureComponent {
-  state = {
-    author: 'Leonidas Esteban'
-  }
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     author: props.author
-  //   }
-  // //   this.handleClick = this.handleClick.bind(this);
-  // }
-  handleClick = (event) => {
-    // console.log(this.props.image)
-    this.setState({
-      author: 'Keily Salinas',
-    })
-  }
   render() {
     const styles = {
       container: {
@@ -29,7 +13,7 @@ class Media extends PureComponent {
       }
     }
     return (
-      <div className="Media" onClick={this.handleClick}>
+      <div className="Media" onClick={this.props.handleClick}>
         <div className="Media-cover">
           <img
             src={this.props.cover}
