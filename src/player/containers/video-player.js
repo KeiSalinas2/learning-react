@@ -8,6 +8,8 @@ import Controls from '../components/video-player-controls.js';
 import ProgressBar from '../components/progress-bar';
 import Spinner from '../components/spinner';
 import Volume from '../components/volume';
+import FullScreen from '../components/full-screen';
+import { fullScreen } from'../../lib/utils';
 
 class VideoPlayer extends Component {
   state = {
@@ -52,10 +54,15 @@ class VideoPlayer extends Component {
     })
   }
   handleVolumeChange = event => {
-    // console.log(event);
-    this.setState({
-      volume: event.target.value
-    })
+    this.video.volume = event.target.value;
+  }
+  handleToggleFUllScreen = event => {
+    console.log('fullScreen',fullScreen)
+    console.log('this.player',this.player)
+    !fullScreen.isFullScreen() ? fullScreen.requestFullScreen(this.player.video) : fullScreen.exitFullScreen()
+  }
+  setRef = element => {
+    this.player = element
   }
   render() {
     return (
@@ -81,12 +88,16 @@ class VideoPlayer extends Component {
             handleVolumeChange={this.handleVolumeChange}
             value={this.state.volume}
           />
+          <FullScreen
+            handleFullScreenClick={this.handleToggleFUllScreen}
+          />
         </Controls>
         <Spinner
           active={this.state.loading}
         />
         <Video
           autoplay={this.props.autoplay}
+          ref={this.setRef}
           pause={this.state.pause}
           volume={this.state.volume}
           handleLoadedMetadata={this.handleLoadedMetadata}

@@ -9,15 +9,9 @@ class Video extends Component {
       this.video.pause()
     }
   }
-  setVolume(value) {
-    this.video.volume = value;
-  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.pause !== this.props.pause) {
       this.togglePlay();
-    }
-    if (nextProps.volume !== this.props.volume) {
-      this.setVolume(nextProps.volume);
     }
   }
   setRef = element => {
