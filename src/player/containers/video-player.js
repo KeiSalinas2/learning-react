@@ -57,8 +57,6 @@ class VideoPlayer extends Component {
     this.video.volume = event.target.value;
   }
   handleToggleFUllScreen = event => {
-    console.log('fullScreen',fullScreen)
-    console.log('this.player',this.player)
     !fullScreen.isFullScreen() ? fullScreen.requestFullScreen(this.player.video) : fullScreen.exitFullScreen()
   }
   setRef = element => {
@@ -68,7 +66,7 @@ class VideoPlayer extends Component {
     return (
       <VideoPlayerLayout>
         <Title
-          title="Esto es un video chido!"
+          title={this.props.title}
         />
         <Controls>
           <PlayPause
@@ -104,7 +102,7 @@ class VideoPlayer extends Component {
           handleTimeUpdate={this.handleTimeUpdate}
           handleSeeking={this.handleSeeking}
           handleSeeked={this.handleSeeked}
-          src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
+          src={this.props.src}
         />
       </VideoPlayerLayout>
     )
