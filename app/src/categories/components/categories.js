@@ -10,15 +10,17 @@ function Categories(props) {
     <div className="Categories">
       <Search />
       { props.search &&
-        <Playlist playlist={props.search}
+        <Playlist playlist={props.search.toJS()}
          handleOpenModal={props.handleOpenModal} />
       }
       {
         props.categories.map((item) =>{
           return (
             <Category
-              key={item.id}
-              {...item}
+              description={item.get('description')}
+              title={item.get('title')}
+              playlist={item.get('playlist')}
+              key={item.get('id')}
               handleOpenModal={props.handleOpenModal}
             />
           )
