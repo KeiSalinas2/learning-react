@@ -6,18 +6,19 @@ import ModalContainer from '../../widgets/containers/modal';
 import Modal from '../../widgets/components/modal';
 import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
-import { openModal, closeModal } from '../../../redux/actions/index';
+import * as actions from '../../../redux/actions/index';
 
 import { connect } from 'react-redux';
 import { List as list } from 'immutable';
+import { bindActionCreators } from 'redux';
 
 class Home extends Component {
 
   handleOpenModal = (id) => {
-    this.props.dispatch(openModal(id))
+    this.props.actions.openModal(id)
   }
   handleCloseModal = (event) => {
-    this.props.dispatch(closeModal())
+    this.props.actions.closeModal()
   }
 
   render() {
@@ -54,11 +55,12 @@ const mapStateToProps = state => {
   })
   let searchResults = list()
   const search = state.get('data').get('search');
+
   if(search) {
     const mediaList = state.get('data').get('entities').get('media');
     searchResults = mediaList.filter((item) => {
       if (item.get('author').toLowerCase().includes(search.toLowerCase()) || item.get('title').toLowerCase().includes(search.toLowerCase())){
-        returntrue
+        return true
       }
     }).toList();
   }
@@ -69,4 +71,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps) (Home)
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
