@@ -17,7 +17,7 @@ module.exports = (env) => {
   return {
 
     entry: {
-      "home": path.resolve(__dirname, 'src/entries/home.js'),
+      "home": path.resolve(__dirname, 'app/src/entries/home.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -60,7 +60,7 @@ module.exports = (env) => {
             options: {
               limit: 10000,
               fallback: 'file-loader',
-              name: 'images/[name].[hash].[ext]',
+              name: 'app/images/[name].[hash].[ext]',
             }
           }
         },

@@ -33,7 +33,8 @@ class Home extends Component {
           <Related />
           <Categories
             categories={this.props.categories}
-            handleOpenModal={this.handleOpenModal} />
+            handleOpenModal={this.handleOpenModal}
+            search={this.props.search} />
           {
             this.state.modalVisible &&
             <ModalContainer>
@@ -56,7 +57,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.data.categories
+    categories: state.data.categories,
+    search: state.search
   }
 }
 
