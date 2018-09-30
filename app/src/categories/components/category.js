@@ -3,7 +3,6 @@ import Playlist from '../../playlist/components/playlist.js';
 import './category.css';
 
 function Category(props) {
-  console.log(props.playlist)
   return (
     <div className="Category">
       <p className="Category-description">{props.description}</p>
