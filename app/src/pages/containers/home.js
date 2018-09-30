@@ -8,6 +8,7 @@ import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
 
 import { connect } from 'react-redux';
+import { List as list } from 'immutable';
 
 class Home extends Component {
 
@@ -59,10 +60,19 @@ const mapStateToProps = state => {
   const categories = state.get('data').get('categories').map((categoryId) => {
     return state.get('data').get('entities').get('categories').get(categoryId)
   })
-
+  let searchResults = list()
+  const search = state.get('data').get('search');
+  if(search) {
+    const mediaList = state.get('data').get('entities').get('media');
+    searchResults = mediaList.filter((item) => {
+      if (item.get('author').toLowerCase().includes(search.toLowerCase()) || item.get('title').toLowerCase().includes(search.toLowerCase())){
+        returntrue
+      }
+    }).toList();
+  }
   return {
     categories: categories,
-    search: state.get('data').get('search')
+    search: searchResults
   }
 }
 

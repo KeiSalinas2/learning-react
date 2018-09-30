@@ -3,15 +3,16 @@ import React from 'react';
 import Category from './category';
 import './categories.css';
 import Search from'../../widgets/containers/search';
-import Playlist from '../../playlist/components/playlist.js';
+import Media from '../../playlist/components/media.js';
 
 function Categories(props) {
   return (
     <div className="Categories">
       <Search />
-      { props.search &&
-        <Playlist playlist={props.search.toJS()}
-         handleOpenModal={props.handleOpenModal} />
+      {
+        props.search.map((item) => {
+          return <Media {...item.toJS()} key={item.get('id')}/>
+        })
       }
       {
         props.categories.map((item) =>{
