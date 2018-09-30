@@ -6,24 +6,18 @@ import ModalContainer from '../../widgets/containers/modal';
 import Modal from '../../widgets/components/modal';
 import HandleError from '../../error/containers/handle-error';
 import VideoPlayer from '../../player/containers/video-player';
+import { openModal, closeModal } from '../../../redux/actions/index';
 
 import { connect } from 'react-redux';
 import { List as list } from 'immutable';
 
 class Home extends Component {
 
-   handleOpenModal = (id) => {
-    this.props.dispatch({
-      type: 'OPEN_MODAL',
-      payload: {
-        mediaId: id
-      }
-    })
+  handleOpenModal = (id) => {
+    this.props.dispatch(openModal(id))
   }
   handleCloseModal = (event) => {
-    this.props.dispatch({
-      type: 'CLOSE_MODAL'
-    })
+    this.props.dispatch(closeModal())
   }
 
   render() {
