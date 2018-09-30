@@ -1,7 +1,6 @@
 import schema from '../../schemas/index.js';
-import { SEARCH_ENTITIES } from '../action-types/index';
-
 import { fromJS } from 'immutable';
+import { SEARCH_ENTITIES } from '../action-types/index';
 
 const initialState = fromJS({
   entities: schema.entities,

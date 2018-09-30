@@ -29,7 +29,8 @@ class Home extends Component {
           <Categories
             categories={this.props.categories}
             handleOpenModal={this.handleOpenModal}
-            search={this.props.search} />
+            search={this.props.search}
+            isLoading={this.props.loading} />
           {
             this.props.modal.get('visibility') &&
             <ModalContainer>
@@ -55,7 +56,6 @@ const mapStateToProps = state => {
   })
   let searchResults = list()
   const search = state.get('data').get('search');
-
   if(search) {
     const mediaList = state.get('data').get('entities').get('media');
     searchResults = mediaList.filter((item) => {
@@ -67,7 +67,8 @@ const mapStateToProps = state => {
   return {
     categories: categories,
     search: searchResults,
-    modal: state.get('modal')
+    modal: state.get('modal'),
+    loading: state.get('loading').get('active')
   }
 }
 

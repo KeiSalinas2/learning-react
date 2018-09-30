@@ -2,8 +2,9 @@
   cursor: pointer;
   margin-right: 15px;
   display: inline-block;
-  width: 260px;
+  margin-bottom: 15px;
   vertical-align: top;
+  width: 260px;
 }
 
 .Media:hover .Media-cover {

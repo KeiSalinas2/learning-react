@@ -10,8 +10,12 @@ function Categories(props) {
     <div className="Categories">
       <Search />
       {
+        props.isLoading &&
+        <p>Buscando tus videos favoritos...</p>
+      }
+      {
         props.search.map((item) => {
-          return <Media {...item.toJS()} key={item.get('id')}/>
+          return <Media openModal={props.handleOpenModal} {...item.toJS()} key={item.get('id')}/>
         })
       }
       {
