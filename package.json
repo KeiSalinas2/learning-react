@@ -4,10 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build:dev": "webpack-dev-server --config ./webpack.dev.config.js",
+    "build:dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
     "build": "webpack",
     "build:local": "webpack --env.NODE_ENV=local",
-    "build:prod": "webpack -p --env.NODE_ENV=production"
+    "build:prod": "webpack -p --env.NODE_ENV=production --mode production"
   },
   "keywords": [
     "react"
@@ -26,15 +26,16 @@
     "file-loader": "1.1.5",
     "style-loader": "0.19.0",
     "url-loader": "0.6.2",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.3"
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "immutable": "^3.8.2",
     "normalizr": "^3.2.4",
     "prop-types": "15.6.0",
-    "react": "16.1.1",
-    "react-dom": "16.1.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
