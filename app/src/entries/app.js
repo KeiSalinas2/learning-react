@@ -33,8 +33,8 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header />
-        <Route exact path="/" component={Videos} />
-        <Route exact path="/videos" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/videos" component={Videos} />
       </Fragment>
     </Provider>
   </BrowserRouter>
