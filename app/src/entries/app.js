@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Videos from '../pages/containers/videos';
 import Home from '../pages/components/home';
 import Header from '../pages/components/header';
+import NotFound from '../pages/components/not-found';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -10,7 +11,7 @@ import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reducer from '../../redux/reducers/';
 import data from '../../schemas/';
@@ -33,8 +34,11 @@ render(
     <Provider store={store}>
       <Fragment>
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/videos" component={Videos} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/videos" component={Videos} />
+          <Route component={NotFound} />
+        </Switch>
       </Fragment>
     </Provider>
   </BrowserRouter>
