@@ -25,7 +25,7 @@ class Header extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/videos" activeClassName="is-selected">
+              <NavLink to="/v" activeClassName="is-selected">
                 Redirect
               </NavLink>
             </li>

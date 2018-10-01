@@ -3,10 +3,11 @@ import Search from '../components/search';
 import  * as actions from '../../../redux/actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { Prompt } from 'react-router';
 class SearchContainer extends Component {
   state = {
-    value: 'Luis Fonsi'
+    value: 'Luis Fonsi',
+    prompt: false
   }
   handleSubmit = event => {
     event.preventDefault();
@@ -17,7 +18,8 @@ class SearchContainer extends Component {
   }
   handleInputChange = event => {
     this.setState({
-      value: event.target.value
+      value: event.target.value,
+      prompt: !!(event.target.value.length),
     })
   }
 
@@ -28,6 +30,7 @@ class SearchContainer extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleInputChange}
         value={this.state.value}
+        prompt={this.state.prompt}
       />
     )
   }

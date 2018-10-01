@@ -11,7 +11,7 @@ import { Map as map } from 'immutable';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import reducer from '../../redux/reducers/';
 import data from '../../schemas/';
@@ -37,6 +37,7 @@ render(
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/videos" component={Videos} />
+          <Redirect from="/v" to='/videos' />
           <Route component={NotFound} />
         </Switch>
       </Fragment>
